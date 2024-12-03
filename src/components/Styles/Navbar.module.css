@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    margin-left: 20px;
+    font-weight: bold;
+}
+ul{
+    list-style: none;
+    display: flex;
+    gap: 7rem;
+    justify-content: space-around;
+    padding: 20px;
+}
+.auth-buttons{
+    padding: 20px;
+    display: flex;
+    gap: 1rem;
+}
+.login-btn{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    /*box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);*/
+}
+.register-btn{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    background-color: #309689;
+}
+body{
+    margin: 0;
+    padding: 0;
+}

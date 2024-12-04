@@ -1,0 +1,24 @@
+[
+  {
+    "timePosted": "10 min ago",
+    "logo": "path-to-logo.png",
+    "title": "Forward Security Director",
+    "company": "Bauch, Schuppe and Schulist Co",
+    "category": "Hotels & Tourism",
+    "type": "Full time",
+    "salary": "$40000-$42000",
+    "location": "New York, USA"
+  },
+
+  {
+    "timePosted": "10 min ago",
+    "logo": "path-to-logo.png",
+    "title": "Security Director",
+    "company": "Schulist Co",
+    "category": "Hotels",
+    "type": "hybrid",
+    "salary": "$40000-$42000",
+    "location": "New York, USA"
+  }
+
+]

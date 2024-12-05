@@ -20,7 +20,7 @@ const EditProfile = ({ onClose, onSave }) => {
         e.preventDefault();
         try {
             const response = await fetch('http://localhost:8020/employers/editProfile', {
-                method: 'POST',
+                method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });

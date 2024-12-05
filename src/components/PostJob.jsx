@@ -3,14 +3,12 @@ import styles from './Styles/PostJob.module.css'; // Adjust the path to your CSS
 
 const PostJob = ({ onClose }) => {
     const [formData, setFormData] = useState({
-        jobPostId: 0,
-        employerId: 0,
         email: '',
         jobTitle: '',
         jobDescription: '',
         jobType: '',
         salaryRange: '',
-        timePosted: new Date().toISOString(), // Automatically set current time
+        postedAt: new Date().toISOString(),
     });
 
     const handleChange = (e) => {

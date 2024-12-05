@@ -8,9 +8,12 @@
 }
 .job-search h1{
     margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 50px;
 }
 .job-search p {
     margin-bottom: 20px;
+    font-size: 20px;
 }
 .search-bar {
     display: flex;
@@ -23,12 +26,14 @@
     border: none;
     border-radius: 5px;
     width: 200px;
+    font-size: 16px;
 }
 .search-bar button {
     background-color: #000000;
     color: white;
     border: none;
     cursor: pointer;
+    height: 40px;
 }
 
 /* Stats.css */
@@ -36,6 +41,7 @@
     display: flex;
     justify-content: space-around;
     padding: 10px;
+    /*margin-bottom: 30px;*/
 }
 
 .stat-item {
@@ -62,7 +68,9 @@
 
 .stat-text h2 {
     margin: 0;
-    font-size: 20px;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
 }
 
 .stat-text p {

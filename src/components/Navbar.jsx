@@ -1,30 +1,30 @@
-import logo from './../assets/Job Portal.png'
-import logoIcon from './../assets/check(1) 1.png'
-import styles from './Styles/Navbar.module.css'
+import React from 'react';
+import styles from './Styles/Navbar.module.css';
 
+const Navbar = ({ onRegisterClick, onLoginClick }) => {
+    return (
+        <div className={styles["navbar"]}>
+            <h1 className={styles['logo']}>JOBS</h1>
 
+            <ul className={styles['nav-links']}>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jobs">Jobs</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#contact">Contact us</a></li>
+            </ul>
 
-const Navbar = () => {
-    return(
-        <>
-            <div className={styles["navbar"]}>
+            <div className={styles['auth-buttons']}>
 
-                <h1 className={styles['logo']}>JOBS</h1>
+                <button className={styles['register-btn']} onClick={onRegisterClick}>
+                    Register
+                </button>
 
-                <ul className={styles['nav-links']}>
-                    <li><a href="#"/>Home</li>
-                    <li><a href="#"/>Jobs</li>
-                    <li><a href="#"/>About us</li>
-                    <li><a href="#"/>Contact us</li>
-                </ul>
-
-                <div className={styles['auth-buttons']}>
-                    <button className={styles['register-btn']}>Register</button>
-                    <button className={styles['login-btn']}>Logout</button>
-                </div>
-
+                <button className={styles['login-btn']} onClick={onLoginClick}>
+                    Login
+                </button>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
+
 export default Navbar;

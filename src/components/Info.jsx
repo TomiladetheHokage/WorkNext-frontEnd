@@ -1,6 +1,6 @@
-const test = () =>{
+const Info = () =>{
     return (
         <div>hi</div>
     )
 }
-export default test;
+export default Info;

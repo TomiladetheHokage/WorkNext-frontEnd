@@ -9,7 +9,7 @@ const EmployerRegister = ({ onClose }) => {
         companyDescription: '',
         email: '',
         password: '',
-        userRole: 'employer',
+        role: 'EMPLOYERS',
     });
 
     const navigate = useNavigate();
@@ -27,15 +27,24 @@ const EmployerRegister = ({ onClose }) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         })
-            .then((response) => response.json())
-            .then((data) => {
-                alert('Employer Registration Successful!');
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        throw new Error(data.message || 'Invalid email or password');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                alert('Registration successful');
                 onClose();
-                navigate('/employer'); // Navigate to the employer page
+                navigate('/employer');
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('Registration Failed!');
+                alert('Registration Failed: ' + error.message);
             });
     };
 

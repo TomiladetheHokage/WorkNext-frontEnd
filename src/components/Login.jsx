@@ -1,39 +1,62 @@
 import React, { useState } from "react";
 import styles from "./Styles/Login.module.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ onClose, onSwitchToEmployer }) => {
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
-
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-    }
+    };
+
+    const validate = () => {
+        const errors = {};
+        if (!formData.email) {
+            errors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            errors.email = "Email is invalid";
+        }
+        if (!formData.password) {
+            errors.password = "Password is required";
+        }
+        return errors;
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
 
         fetch('http://localhost:8020/employers/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Invalid email or password');
+                }
+                return response.json();
+            })
             .then(() => {
                 alert('Login successful');
-                navigate('/employer');
                 onClose();
+                navigate('/employer');
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('Login Failed!');
-            })
-    }
+                alert('Login Failed: ' + error.message);
+            });
+    };
 
     return (
         <>
@@ -55,6 +78,7 @@ const Login = ({ onClose, onSwitchToEmployer }) => {
                         onChange={handleChange}
                         required
                     />
+                    {errors.email && <p className={styles.error}>{errors.email}</p>}
                     <input
                         type="password"
                         name="password"
@@ -63,6 +87,7 @@ const Login = ({ onClose, onSwitchToEmployer }) => {
                         onChange={handleChange}
                         required
                     />
+                    {errors.password && <p className={styles.error}>{errors.password}</p>}
                     <button type="submit" className={styles.submitButton}>
                         Login
                     </button>
@@ -76,6 +101,6 @@ const Login = ({ onClose, onSwitchToEmployer }) => {
             </div>
         </>
     );
-}
+};
 
 export default Login;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Styles/EmployerDashboard.module.css';
+import JobPosts from "../components/JobPosts.jsx";
 
 const EmployerDashboard = ({ onPostJobClick, onEditProfileClick }) => {
     return (
@@ -32,6 +33,9 @@ const EmployerDashboard = ({ onPostJobClick, onEditProfileClick }) => {
                     <p>Select an option from the menu to get started.</p>
                 </section>
             </main>
+
+            <JobPosts/>
+
         </div>
     );
 };

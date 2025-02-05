@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Styles/RecentJobs.module.css';
 import jobs from '/src/jobs.json';
 import { FaBriefcase, FaClock, FaDollarSign, FaMapMarkerAlt, FaBookmark } from 'react-icons/fa';
+import companyLogo from '../assets/company.png'
 
 const RecentJobs = () => {
     return (
@@ -9,7 +10,7 @@ const RecentJobs = () => {
             <h1>Recent Jobs Available</h1>
 
             <div className={styles['header-container']}>
-                <p>Some string of text I will just leave here for now</p>
+                <p>Recent available job postings</p>
                 <a href="/view-all" className={styles['view-all-link']}>View all</a>
             </div>
 
@@ -21,7 +22,7 @@ const RecentJobs = () => {
 
                     <div className={styles['job-details']}>
                         <div className={styles['job-title']}>
-                            <img src={job.logo}  className={styles['company-logo']} />
+                            <img src={companyLogo}  className={styles['company-logo']} />
                             <h2>{job.title}</h2>
                         </div>
 

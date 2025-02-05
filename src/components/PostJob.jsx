@@ -3,6 +3,8 @@ import styles from './Styles/PostJob.module.css'; // Adjust the path to your CSS
 
 const PostJob = ({ onClose }) => {
     const [formData, setFormData] = useState({
+        jobPostId: 0,
+        employerId: 0,
         email: '',
         jobTitle: '',
         jobDescription: '',
@@ -16,30 +18,26 @@ const PostJob = ({ onClose }) => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
 
-        fetch('http://localhost:8020/employers/uploadPost', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Failed to post job');
-                }
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            fetch('http://localhost:8020/employers/uploadPost', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
             })
-            .then((data) => {
-                alert('Job posted successfully!');
-                onClose(); // Close the modal after successful submission
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Failed to post job!');
-            });
-    };
+                .then(response => response.json())
+                .then(() => {
+                    alert('Posted successful');
+                    onClose();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Post Failed!');
+                })
+        }
 
     return (
         <div className={styles.modalOverlay}>
